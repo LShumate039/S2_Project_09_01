@@ -20,7 +20,10 @@
     <title>CGIP Registration Form</title>
     <link href="cg_base.css" rel="stylesheet" />
     <link href="cg_styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="cg_forms.css" />
+    <link rel="stylesheet" href="cg_validate.css" />
     <script src=" cg_script.js "></script>
+
 </head>
 
 <body>
@@ -53,10 +56,54 @@
         <h1>Conference Registration Form</h1>
         <p>Required Item (*)</p>
         <form action="
-        http://www.example.com/cg/register " method="POST"></form>
-        <label for=""></label>
-        <input type="text">
+        http://www.example.com/cg/register " method="POST">
 
+            <label for="titleBox">Title</label>
+            <input id="titleBox" type="text" name="title" list="titles">
+
+            <label for="fnBox">FirstName*</label>
+            <input id="fnBox" type="text" name="FirstName" required>
+
+            <label for="lnBox">LastName*</label>
+            <input type="text" id="lnBox" name="LastName" required>
+
+            <label for="addbox">Address*</label>
+            <textarea type="text" id="addBox" name="address" required></textarea>
+
+            <label for="groupBox">Company or University</label>
+            <input type="text" id="groupBox" name="group">
+
+            <label for="emailBox">Email*</label>
+            <input type="email" id="emailBox" name="email">
+
+            <label for="phoneBox">Phone Number*</label>
+            <input type="tel" id="phoneBox" name="phonenumber" placeholder="(nnn) nnnnn-nnnn" pattern=" ^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$ "
+                required>
+
+            <label for="idBox">ACGIP Membership Number</label>
+            <input type="text" id="idBox" name=" acgipID" pattern=" ^acgip\-\d{6}$ " placeholder="acgip-nnnnnn">
+            <!-- this gives the user options to choice from when doing the form -->
+            <datalist id="titles">
+                <option value="Mr."></option>
+                <option value="Mrs."></option>
+                <option value="Ms."></option>
+                <option value="Prof."></option>
+                <option value="Dr."></option>
+                <option value="Assist. Prof."></option>
+                <option value="Assoc. Prof."></option>
+            </datalist>
+            <label for="regList"> Registration category </label>
+            <select name="registertype" id="regList">
+                <option value="Member">ACGIP Member ($695)</option>
+                <option value="Non-Member">Non-Member ($795)</option>
+                <option value="student">Student ($310)</option>
+                <option value="poster">Poster ($95)</option>
+                <option value="guest">Guest ($35)</option>
+            </select>
+            <p>
+                <input type="submit" value="Continue">
+            </p>
+        </form>
     </section>
 
     <aside>
@@ -66,7 +113,8 @@
             <dt>Non-Member ($795)</dt>
             <dd>Eligible to attend all sessions and banquet</dd>
             <dt>Student ($310)</dt>
-            <dd>Eligible to attend all sessions. <a href="#">Proof</a> of
+            <dd>Eligible to attend all sessions. <a href="
+                #">Proof</a> of
                 student status required</dd>
             <dt>Poster ($95)</dt>
             <dd>Eligible to attend display hall and vendor stations</dd>
